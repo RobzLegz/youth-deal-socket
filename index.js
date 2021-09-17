@@ -1,9 +1,9 @@
-  
-const io = require("socket.io")(8900, {
-    cors: {
-      origin: "http://localhost:3000",
-    },
-  });
+require("dotenv").config();
+const io = require("socket.io")(process.env.PORT, {
+  cors: {
+    origin: "http://localhost:3000",
+  },
+});
   
   let users = [];
   
