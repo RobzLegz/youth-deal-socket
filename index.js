@@ -32,11 +32,14 @@ const io = require("socket.io")(process.env.PORT, {
   
     //send and get message
     socket.on("sendMessage", ({ senderId, receiverId, text }) => {
+      console.log(receiverId)
       const user = getUser(receiverId);
-      io.to(user.socketId).emit("getMessage", {
-        senderId,
-        text,
-      });
+      if(user){
+        io.to(user.socketId).emit("getMessage", {
+          senderId,
+          text,
+        });
+      } 
     });
   
     //when disconnect
